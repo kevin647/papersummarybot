@@ -1,0 +1,23 @@
+# API keys & secrets
+.env
+api_key.txt
+
+# Google OAuth tokens & credentials
+google_token.pickle
+google_credentials.json
+
+# Kakao / Google Forms state
+forms_state.json
+
+# Downloaded papers & summaries
+paper/
+
+# Logs
+*.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
