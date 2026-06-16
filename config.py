@@ -14,13 +14,21 @@ GEMINI_MODEL = "gemini-3.1-pro-preview"
 
 # ── Paper search ──────────────────────────────────────────────────────────────
 SEARCH_KEYWORDS = [
-    "robotics",
-    "reinforcement learning",
-    "world model",
-    "VLA",
-    "vision language action",
+    # navigation / mapping
     "navigation",
     "SLAM",
+    "simultaneous localization and mapping",
+    # learning paradigms
+    "reinforcement learning",
+    "world model",
+    "world models",
+    # VLA / multimodal policy
+    "VLA",
+    "vision language action",
+    "vision-language-action",
+    # 'robotics' 단독은 cat 필터와 중복 → 구체화하거나 제거
+    "manipulation",
+    "humanoid",
 ]
 
 # How many candidates to pull from arXiv before Gemini selects the best N

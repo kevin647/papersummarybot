@@ -16,19 +16,23 @@ def _cfg() -> dict:
         "access_token":  os.getenv("KAKAO_ACCESS_TOKEN", ""),
         "refresh_token": os.getenv("KAKAO_REFRESH_TOKEN", ""),
         "rest_api_key":  os.getenv("KAKAO_REST_API_KEY",  ""),
+        "client_secret": os.getenv("KAKAO_CLIENT_SECRET", ""),
     }
 
 
 def _refresh_access_token() -> str:
     """Use the refresh token to obtain a new access token and persist it."""
     cfg  = _cfg()
+    payload = {
+        "grant_type":    "refresh_token",
+        "client_id":     cfg["rest_api_key"],
+        "refresh_token": cfg["refresh_token"],
+    }
+    if cfg["client_secret"]:
+        payload["client_secret"] = cfg["client_secret"]
     resp = requests.post(
         "https://kauth.kakao.com/oauth/token",
-        data={
-            "grant_type":    "refresh_token",
-            "client_id":     cfg["rest_api_key"],
-            "refresh_token": cfg["refresh_token"],
-        },
+        data=payload,
         timeout=15,
     )
     data = resp.json()
